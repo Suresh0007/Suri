@@ -27,6 +27,7 @@ export class RegistrationComponent implements OnInit {
 
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
+  userdelete;
 
   onSubmit() {
       this.submitted = true;
@@ -35,6 +36,7 @@ export class RegistrationComponent implements OnInit {
       } else {
         this.user.UserList.push(this.registerForm.value);
         this.onReset();
+        this.removePhone(this);
       }
   }
 
@@ -45,7 +47,7 @@ export class RegistrationComponent implements OnInit {
       this.registerForm.reset();
   }
   delete(i) {
-    this.UserList.splice(i, 1);
+     this.UserList.splice(i, 1);
   }
   selectAll() {
     // tslint:disable-next-line:prefer-for-of
@@ -91,12 +93,11 @@ export class RegistrationComponent implements OnInit {
       zip: ['', [ Validators.required, Validators.pattern(/^\d{5}$|^\d{5}-\d{4}$/)]],
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      phone2: [''],
+      phone2: ['', Validators.pattern(/^\d{10}$|^\d{10}-\d{9}$/)],
       selected : false
   });
 
     this.UserList = this.user.getStudents();
-    console.log(this.UserList);
   }
 
 }

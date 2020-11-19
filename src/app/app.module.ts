@@ -8,6 +8,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from './search.pipe';
+import { UniquePipe } from './unique.pipe';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SearchPipe } from './search.pipe';
     AppComponent,
     RegistrationComponent,
     EmployeeDetailsComponent,
-    SearchPipe
+    SearchPipe,
+    UniquePipe
   ],
   imports: [
     BrowserModule,

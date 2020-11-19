@@ -59,7 +59,11 @@
 									</div>
 										<div *ngFor="let phone of fieldArray; let i = index">
 											<div class="form-group">
-											<input class="form-control" placeholder="Phone Number" type="text" formControlName="phone2" />
+											<input class="form-control" placeholder="Phone Number" type="text" formControlName="phone2" [ngClass]="{ 'is-invalid': submitted && f.phone2.errors }"/>
+											<div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+												<div *ngIf="f.phone2.errors.required">Phone number is required</div>
+												<div *ngIf="f.phone2.errors.phone2">Phone number is Numaric</div>
+											</div>
 										</div>
 										  </div>
 										</div>
@@ -186,9 +190,10 @@
 			</div>
 			<div class="modal-body text-center">
 			  <p>You want to delete it?</p>
-			  <div *ngFor="let user of UserList;let i = index">
+			  <!-- <div *ngFor="let user of UserList;let i = index">
 				<p><strong>{{user.firstName}} {{user.lastName}} </strong> User</p>
-			</div>
+			</div> -->
+			<!-- <p>{{userdelete.firstName}}</p> -->
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-danger custom-btn" (click)="delete(i);modal.close('Save click')">Delete</button>

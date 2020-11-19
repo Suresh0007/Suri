@@ -10,6 +10,6 @@ export interface User {
     zip: number;
     country: string;
     state: string;
-    phone2?: number;
+    phone2?: number[];
   }
 
