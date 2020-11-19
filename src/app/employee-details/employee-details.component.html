@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="row">
+        <div class="col-md-12">
+			<h4 class="dark-grey">Employee Details: {{data.length}}</h4>
+			<a routerLink="/" class="pull-right" routerLinkActive="active">Previous</a>
+		</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <select  class="form-control" [(ngModel)]="selectedQuantity">
+                <option *ngFor="let departments of data;let i=index">{{departments.departments}}</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <input type="text" [(ngModel)]="query" class="form-control" placeholder="Search...">
+        </div>
+        <div class="col-md-4">
+            <label>Sort by</label>
+        </div>
+</div>
+
+</div>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="table-responsive ">
+                    <table class="table table-bordered card-body">
+                        <thead>
+                            <tr>
+                                <th>Emp Name</th>
+                                <th>Age</th>
+                                <th>Email Address</th>
+                                <th>Departments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp_data of data | search : query; let i = index ">
+                                <td>{{emp_data.name}}</td>
+                                <td>{{emp_data.age}}</td>
+                                <td>{{emp_data.email}}</td>
+                                <td placement="top" ngbTooltip= {{emp_data.departments}}>{{emp_data.departments.length}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
